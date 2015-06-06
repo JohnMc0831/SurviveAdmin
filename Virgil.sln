@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgil", "Virgil\Virgil.csproj", "{403E1159-A831-4918-B3F7-8280A4E165B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgil.Tests", "Virgil.Tests\Virgil.Tests.csproj", "{6A5D71A0-B5D3-418F-8034-A55F5EFEE7DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{020CE3F5-BC68-43C5-B6EB-FA408A9D859D}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{660CFF9D-5A75-4708-9D14-D991689373F3}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\SurviveAdmin-WAWS-dev.json = PublishScripts\Configurations\SurviveAdmin-WAWS-dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{403E1159-A831-4918-B3F7-8280A4E165B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{403E1159-A831-4918-B3F7-8280A4E165B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{403E1159-A831-4918-B3F7-8280A4E165B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{403E1159-A831-4918-B3F7-8280A4E165B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A5D71A0-B5D3-418F-8034-A55F5EFEE7DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A5D71A0-B5D3-418F-8034-A55F5EFEE7DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A5D71A0-B5D3-418F-8034-A55F5EFEE7DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A5D71A0-B5D3-418F-8034-A55F5EFEE7DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{660CFF9D-5A75-4708-9D14-D991689373F3} = {020CE3F5-BC68-43C5-B6EB-FA408A9D859D}
+	EndGlobalSection
+EndGlobal
