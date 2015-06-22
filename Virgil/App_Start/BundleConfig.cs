@@ -22,8 +22,8 @@ namespace Virgil
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/tinymce").Include(
-                      "~/Scripts/tinymce/tinymce.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/tinymce").Include(
+            //          "~/Scripts/tinymce/tinymce.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/qtip").Include(
                       "~/Scripts/qTip/jquery.qtip.js"));

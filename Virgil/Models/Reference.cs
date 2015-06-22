@@ -13,7 +13,7 @@ namespace Virgil.Models
         public int id { get; set; }
         public string Reference1 { get; set; }
         public Nullable<int> LinkId { get; set; }
-        public virtual Link Link { get; set; }
+        public virtual TopicLink Link { get; set; }
         public virtual ICollection<Topic> Topics { get; set; }
     }
 }

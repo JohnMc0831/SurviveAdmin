@@ -8,7 +8,7 @@ namespace Virgil.Models
     {
         public Topic()
         {
-            this.Links = new List<Link>();
+            this.Links = new List<TopicLink>();
             this.Media = new List<Medium>();
             this.References = new List<Reference>();
         }
@@ -22,7 +22,7 @@ namespace Virgil.Models
         public string Body { get; set; }
         [Display(Name="Display Order")]
         public int DisplayOrder { get; set; }
-        public virtual ICollection<Link> Links { get; set; }
+        public virtual ICollection<TopicLink> Links { get; set; }
         public virtual ICollection<Medium> Media { get; set; }
         public virtual ICollection<Reference> References { get; set; }
     }

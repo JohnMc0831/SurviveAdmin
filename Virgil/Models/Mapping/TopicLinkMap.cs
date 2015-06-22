@@ -2,9 +2,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Virgil.Models.Mapping
 {
-    public class LinkMap : EntityTypeConfiguration<Link>
+    public class TopicLinkMap : EntityTypeConfiguration<TopicLink>
     {
-        public LinkMap()
+        public TopicLinkMap()
         {
             // Primary Key
             this.HasKey(t => t.id);

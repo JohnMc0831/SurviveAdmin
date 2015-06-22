@@ -3,7 +3,7 @@ using Virgil.Models;
 
 namespace Virgil.Repositories
 {
-    interface IHomeRepository
+    interface ITopicsRepository
     {
         Topic GetTopicById(int id);
         Topic GetTopicByName(string name);

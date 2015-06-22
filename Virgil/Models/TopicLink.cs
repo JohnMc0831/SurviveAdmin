@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace Virgil.Models
 {
-    public partial class Link
+    public partial class TopicLink
     {
-        public Link()
+        public TopicLink()
         {
             this.References = new List<Reference>();
             this.Topics = new List<Topic>();
