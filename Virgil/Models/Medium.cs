@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Virgil.Models
 {
@@ -11,9 +12,13 @@ namespace Virgil.Models
 
         public int id { get; set; }
         public string Title { get; set; }
-        public string FilePath { get; set; }
         public string Tip { get; set; }
-        public string MediaType { get; set; }
+        public int FileId { get; set; }
+        [StringLength(255)]
+        public string FileName { get; set; }
+        [StringLength(100)]
+        public string ContentType { get; set; }
+        public byte[] Content { get; set; }
         public virtual ICollection<Topic> Topics { get; set; }
     }
 }

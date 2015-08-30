@@ -20,6 +20,8 @@ namespace Virgil.Models
         [Required]
         [AllowHtml]
         public string Body { get; set; }
+        public string BackColor { get; set; }
+        public string TextColor { get; set; }
         [Display(Name="Display Order")]
         public int DisplayOrder { get; set; }
         public virtual ICollection<TopicLink> Links { get; set; }

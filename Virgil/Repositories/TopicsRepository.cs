@@ -61,5 +61,12 @@ namespace Virgil.Repositories
             db.Entry(topic).State = EntityState.Deleted;
             db.SaveChanges();
         }
+
+        //Media
+        public void AddMedia(Medium file, Topic topic)
+        {
+            topic.Media.Add(file);
+            db.SaveChanges();
+        }
     }
 }

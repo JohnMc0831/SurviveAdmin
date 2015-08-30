@@ -10,8 +10,7 @@ namespace Virgil.Models.Mapping
             this.HasKey(t => t.id);
 
             // Properties
-            this.Property(t => t.Title)
-                .IsRequired();
+            this.Property(t => t.Title).IsRequired();
 
             // Table & Column Mappings
             this.ToTable("Topics");
@@ -20,6 +19,8 @@ namespace Virgil.Models.Mapping
             this.Property(t => t.Summary).HasColumnName("Summary");
             this.Property(t => t.Body).HasColumnName("Body");
             this.Property(t => t.DisplayOrder).HasColumnName("DisplayOrder");
+            this.Property(t => t.BackColor).HasColumnName("BackColor");
+            this.Property(t => t.TextColor).HasColumnName("TextColor");
         }
     }
 }

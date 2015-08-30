@@ -14,10 +14,10 @@ namespace Virgil.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(255);
 
-            this.Property(t => t.FilePath)
+            this.Property(t => t.FileName)
                 .IsRequired();
 
-            this.Property(t => t.MediaType)
+            this.Property(t => t.ContentType)
                 .IsRequired()
                 .HasMaxLength(5);
 
@@ -25,9 +25,9 @@ namespace Virgil.Models.Mapping
             this.ToTable("Media");
             this.Property(t => t.id).HasColumnName("id");
             this.Property(t => t.Title).HasColumnName("Title");
-            this.Property(t => t.FilePath).HasColumnName("FilePath");
+            this.Property(t => t.FileName).HasColumnName("FileName");
             this.Property(t => t.Tip).HasColumnName("Tip");
-            this.Property(t => t.MediaType).HasColumnName("MediaType");
+            this.Property(t => t.ContentType).HasColumnName("ContentType");
 
             // Relationships
             this.HasMany(t => t.Topics)

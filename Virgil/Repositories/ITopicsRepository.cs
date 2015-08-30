@@ -12,5 +12,6 @@ namespace Virgil.Repositories
         void UpdateTopic(Topic topic);
         void RemoveTopic(Topic topic);
         int GetNextTopicDisplayOrderValue();
+        void AddMedia(Medium file, Topic topic);
     }
 }

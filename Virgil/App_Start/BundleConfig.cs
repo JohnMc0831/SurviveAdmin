@@ -28,12 +28,16 @@ namespace Virgil
             bundles.Add(new ScriptBundle("~/bundles/qtip").Include(
                       "~/Scripts/qTip/jquery.qtip.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/spectrum").Include(
+                      "~/Scripts/spectrum.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/virgil").Include(
                       "~/Scripts/Virgil.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Scripts/tinymce/skins/lightgray/skin.min.css",
                       "~/Scripts/qTip/jquery.qtip.css",
+                      "~/Content/spectrum.css",
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
         }

@@ -1,6 +1,16 @@
 ﻿/// <reference path="_references.js" />
 $(document).ready(function() {
     //Dom loaded...
+    $(".colorPicker").spectrum({
+        preferredFormat: "hex",
+        color: "green"
+    });
+
+	$("#addNewMedia").on("click", function(e) {
+		e.preventDefault();
+		$("#uploadMedia").modal("show");
+	});
+
     tinymce.init({
         selector: "textarea",
         theme: "modern",

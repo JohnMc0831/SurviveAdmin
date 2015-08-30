@@ -46,7 +46,21 @@
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.BackColor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BackColor, new { htmlAttributes = new { @class = "form-control iddybiddyField colorPicker" } })
+                @Html.ValidationMessageFor(model => model.BackColor, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.TextColor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TextColor, new { htmlAttributes = new { @class = "form-control iddybiddyField colorPicker" } })
+                @Html.ValidationMessageFor(model => model.TextColor, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
