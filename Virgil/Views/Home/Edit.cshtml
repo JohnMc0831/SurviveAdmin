@@ -1,10 +1,10 @@
 ﻿@model Virgil.Models.Topic
 
 @{
-    ViewBag.Title = "Update Topic" + Model.Title;
+    ViewBag.Title = "Update Topic <strong>" + Model.Title + "</strong>"; 
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>@Html.Raw(ViewBag.Title)</h2>
 
 
 @using (Html.BeginForm())

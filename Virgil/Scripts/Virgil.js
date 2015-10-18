@@ -39,10 +39,11 @@ $(document).ready(function() {
                 title: "Topic Body Text"
             },
             style: {
-                classes: "qtip-bootstrap qtip-shadow"
+                classes: "qtip-bootstrap qtip-shadow",
+                width: 700
             },
             position: {
-                my: "bottom right",
+                my: "top right",
                 at: "top left",
                 target: $(this)
             }
