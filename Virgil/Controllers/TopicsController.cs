@@ -13,6 +13,7 @@ using Virgil.Repositories;
 
 namespace Virgil.Controllers
 {
+    [AllowAnonymous]
     public class TopicsController : ApiController
     {
         private readonly ITopicsRepository db = new TopicsRepository();
@@ -20,6 +21,7 @@ namespace Virgil.Controllers
         // GET: api/Topics
         public List<Topic> GetTopics()
         {
+
             return db.GetTopics();
         }
 
