@@ -210,8 +210,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\virgiladmin - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\virgiladmin - Web Deploy.pubxml" />
+    <Content Include="fonts\Calibri Bold.ttf" />
+    <Content Include="fonts\calibrii.ttf" />
+    <Content Include="fonts\calibriz.ttf" />
+    <Content Include="fonts\Calibri_0.ttf" />
+    <Content Include="fonts\Avenir.ttc" />
+    <None Include="Properties\PublishProfiles\patientsafe - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\patientsafe - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
