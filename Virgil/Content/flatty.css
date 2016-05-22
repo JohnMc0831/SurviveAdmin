@@ -8,32 +8,31 @@
  */
 
 @font-face {
-    font-family: Calibri;
-    src: url(~/fonts/Calibri_0.ttf)
-}
-
-@font-face {
     font-family: Avenir;
     src: url(~/fonts/Avenir.ttc)
 }
 
+@font-face {
+    font-family: myCalibri;
+    src: url(https://virgil.ftltech.org/fonts/calibri.ttf)
+}
+
+.bodytext {
+    font-family: myCalibri, sans-serif;
+}
 
 body {
     background-color: #f2f2f2;
-    font-family: 'Calibri';
+    font-family: myCalibri, sans-serif;
     font-style: normal;
-    /*font-family: 'Lato', sans-serif;*/
     font-weight: 300;
     font-size: 16px;
-    color: #555;
-
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
 }
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
-    /*font-family: 'Lato', sans-serif;*/
     font-family: 'Avenir';
     font-weight: 300;
     color: #006E9F
@@ -56,12 +55,19 @@ h4 {
 
 /* Paragraph & Typographic */
 p {
+    background-color: #f2f2f2;
+    font-family: myCalibri, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
     line-height: 28px;
     margin-bottom: 25px;
     font-size: 16px;
 }
 
 .centered {
+    font-family: myCalibri, sans-serif;
     text-align: center;
 }
 
@@ -69,7 +75,7 @@ p {
 a {
     color: #73BB44;
     word-wrap: break-word;
-
+    font-family: myCalibri, sans-serif;
     -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
     -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
     -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -79,6 +85,7 @@ a {
 
 a:hover,
 a:focus {
+    font-family: myCalibri, sans-serif;
     color: #7b7b7b;
     text-decoration: none;
     outline: 0;

@@ -215,6 +215,7 @@
     <Content Include="fonts\calibriz.ttf" />
     <Content Include="fonts\Calibri_0.ttf" />
     <Content Include="fonts\Avenir.ttc" />
+    <Content Include="fonts\calibri.ttf" />
     <None Include="Properties\PublishProfiles\patientsafe - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\patientsafe - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

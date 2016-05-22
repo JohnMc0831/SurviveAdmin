@@ -27,9 +27,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Summary)
         </th>
-        <th>
+        @*<th>
             Topic Body
-        </th>
+        </th>*@
         <th>
             Actions
         </th>
@@ -46,10 +46,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Summary)
         </td>
-        <td>
+        @*<td>
             <div class="hasTooltip">Hover for Body</div>
             <div style="display: none;">@Html.Raw(item.Body)</div>
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Delete", "Delete", new { id=item.id }, new {@class = "text-danger"})
         </td>
