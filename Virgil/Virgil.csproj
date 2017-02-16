@@ -236,6 +236,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\Laurel-Wreath.png" />
     <Content Include="Content\flatty.css" />
+    <Content Include="Content\PatientSafetyMovement.png" />
     <Content Include="Content\spectrum.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
