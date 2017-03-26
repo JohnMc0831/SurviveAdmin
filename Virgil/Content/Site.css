@@ -30,3 +30,7 @@ select {
     display: inline;
 }
 
+.fullWidth {
+    width: 100% !important;
+    max-width: unset;
+}

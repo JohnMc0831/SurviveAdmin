@@ -1,6 +1,49 @@
 ﻿/// <reference path="_references.js" />
 $(document).ready(function() {
     //Dom loaded...
+    $("#Languages").on("change", function () {
+        var currentLingo = $("#Languages option:selected").val();
+        switch (currentLingo) {
+            case "English":
+                //hide all divs but English
+                $(".lingoEnglish").fadeIn("slow", function () {
+                    $(".lingoEnglish").removeClass("hidden");
+                });
+
+                $(".lingoGerman").fadeOut("slow", function () {
+                    $(".lingoGerman").addClass("hidden");
+                });
+                $(".lingoSpanish").fadeOut("slow", function () {
+                    $(".lingoSpanish").addClass("hidden");
+                });
+                break;
+            case "German":
+                $(".lingoEnglish").fadeOut("slow", function () {
+                    $(".lingoEnglish").addClass("hidden");
+                });
+                $(".lingoGerman").fadeIn("slow", function () {
+                    $(".lingoGerman").removeClass("hidden");
+                });
+                $(".lingoSpanish").fadeOut("slow", function () {
+                    $(".lingoSpanish").addClass("hidden");
+                });
+                break;
+            case "Spanish":
+                $(".lingoEnglish").fadeOut("slow", function () {
+                    $(".lingoEnglish").addClass("hidden");
+                });
+                $(".lingoGerman").fadeOut("slow", function () {
+                    $(".lingoGerman").addClass("hidden");
+                });
+                $(".lingoSpanish").fadeIn("slow", function () {
+                    $(".lingoSpanish").removeClass("hidden");
+                });
+                break;
+            default:
+        }
+    });
+
+
     $(".colorPicker").spectrum({
         preferredFormat: "hex",
         color: "green"

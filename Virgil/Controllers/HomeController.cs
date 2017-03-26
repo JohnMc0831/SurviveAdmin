@@ -15,12 +15,14 @@ namespace Virgil.Controllers
         public ActionResult Index()
         {
             var topics = db.GetTopics();
+            ViewBag.Languages = new SelectList(db.GetSupportedLanguages());
             return View("Index", topics);
         }
 
         public ActionResult Create()
         {
             var topic = new Topic();
+            ViewBag.Languages = new SelectList(db.GetSupportedLanguages());
             topic.DisplayOrder = db.GetNextTopicDisplayOrderValue();
             return View("Create", topic);
         }
@@ -52,10 +54,12 @@ namespace Virgil.Controllers
         public ActionResult Edit(int id)
         {
             var topic = db.GetTopicById(id);
+            ViewBag.Languages = new SelectList(db.GetSupportedLanguages());
             return View("Edit", topic);
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(Topic topic)
         {
             db.UpdateTopic(topic);

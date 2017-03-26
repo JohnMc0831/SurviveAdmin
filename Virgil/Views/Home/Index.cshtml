@@ -12,26 +12,65 @@
         <a href="#" class="btn btn-primary btn-lg">Sign in &raquo;</a>
     </p>*@
 </div>
-<p>
-    @Html.ActionLink("Add New Topic", "Create", null, new {@class = "btn btn-lg btn-success"})
-</p>
+
+<div class="row">
+    <div class="col-lg-9">
+        @Html.ActionLink("Add New Topic", "Create", null, new { @class = "btn btn-lg btn-success" })
+    </div>
+    <div class="col-lg-3" style="text-align: right;margin-top: 10px;">
+        @Html.DropDownList("Languages", (SelectList)ViewBag.Languages, new { @class = "form-control" })
+    </div>
+</div>
+
 <h3>Topics</h3>
 <table id="topicsTable" class="table table-striped table-hover table-responsive">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DisplayOrder)
+            <span class="lingoEnglish">
+                Display Order
+            </span>
+            <span class="lingoGerman hidden">
+                Bestellung anzeigen
+            </span>
+            <span class="lingoSpanish hidden">
+                Orden de visualización
+            </span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            <span class="lingoEnglish">
+                @Html.DisplayNameFor(model => model.Title)
+            </span>
+            <span class="lingoGerman hidden">
+                @Html.DisplayNameFor(model => model.TitleGerman)
+            </span>
+            <span class="lingoSpanish hidden">
+                @Html.DisplayNameFor(model => model.TitleSpanish)
+            </span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Summary)
+            <span class="lingoEnglish">
+                @Html.DisplayNameFor(model => model.Summary)
+            </span>
+            <span class="lingoGerman hidden">
+                @Html.DisplayNameFor(model => model.SummaryGerman)
+            </span>
+            <span class="lingoSpanish hidden">
+                @Html.DisplayNameFor(model => model.SummarySpanish)
+            </span>
         </th>
         @*<th>
             Topic Body
         </th>*@
         <th>
-            Actions
+            <span class="lingoEnglish">
+                Actions
+            </span>
+            <span class="lingoGerman hidden">
+                Aufgaben
+            </span>
+            <span class="lingoSpanish hidden">
+                Tareas
+            </span>
         </th>
     </tr>
 
@@ -41,10 +80,62 @@
             @Html.DisplayFor(modelItem => item.DisplayOrder)
         </td>
         <td>
-            @Html.ActionLink(item.Title, "Edit", new { id=item.id})
+            <span class="lingoEnglish">
+                @Html.ActionLink(item.Title, "Edit", new { id = item.id })
+            </span>
+            <span class="lingoGerman hidden">
+                @if (!string.IsNullOrEmpty(item.TitleGerman))
+                {
+                    @Html.ActionLink(item.TitleGerman, "Edit", new { id = item.id })
+                }
+                else
+                {
+                    @Html.ActionLink("Kein Titel", "Edit", new { id = item.id })
+                }
+
+            </span>
+            <span class="lingoSpanish hidden">
+                @if (!string.IsNullOrEmpty(item.TitleSpanish))
+                {
+                    @Html.ActionLink(item.TitleSpanish, "Edit", new { id = item.id })
+                }
+                else
+                {
+                    @Html.ActionLink("Sin Título", "Edit", new { id = item.id })
+                }
+            </span>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Summary)
+            <span class="lingoEnglish">
+                @if (!string.IsNullOrEmpty(item.Summary))
+                {
+                    @Html.ActionLink(item.Summary, "Edit", new { id = item.id })
+                }
+                else
+                {
+                    @Html.ActionLink("No Summary", "Edit", new { id = item.id })
+                }
+            </span>
+            <span class="lingoGerman hidden">
+                @if (!string.IsNullOrEmpty(item.SummaryGerman))
+                {
+                    @Html.ActionLink(item.SummaryGerman, "Edit", new { id = item.id })
+                }
+                else
+                { 
+                    @Html.ActionLink("Keine Zusammenfassung", "Edit", new { id = item.id })
+                }
+            </span>
+            <span class="lingoSpanish hidden">
+                @if (!string.IsNullOrEmpty(item.SummarySpanish))
+                {
+                    @Html.ActionLink(item.SummarySpanish, "Edit", new { id = item.id })
+                }
+                else
+                {
+                    @Html.ActionLink("Sin Suma", "Edit", new { id = item.id })
+                }
+            </span>
         </td>
         @*<td>
             <div class="hasTooltip">Hover for Body</div>

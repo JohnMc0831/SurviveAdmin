@@ -19,6 +19,17 @@ namespace Virgil.Repositories
             
         }
 
+        public List<string> GetSupportedLanguages()
+        {
+            var languages = new List<string>
+            {
+                "English",
+                "German",
+                "Spanish"
+            };
+            return languages;
+        }
+
         public List<Topic> GetTopics()
         {
             return db.Topics.OrderBy(t => t.DisplayOrder).ToList();
