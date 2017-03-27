@@ -109,7 +109,7 @@
             <span class="lingoEnglish">
                 @if (!string.IsNullOrEmpty(item.Summary))
                 {
-                    @Html.ActionLink(item.Summary, "Edit", new { id = item.id })
+                    @Html.Raw(item.Summary.Replace("<p>", "").Replace("</p>", ""))
                 }
                 else
                 {
@@ -119,7 +119,7 @@
             <span class="lingoGerman hidden">
                 @if (!string.IsNullOrEmpty(item.SummaryGerman))
                 {
-                    @Html.ActionLink(item.SummaryGerman, "Edit", new { id = item.id })
+                    @Html.Raw(item.SummaryGerman)
                 }
                 else
                 { 
@@ -129,7 +129,7 @@
             <span class="lingoSpanish hidden">
                 @if (!string.IsNullOrEmpty(item.SummarySpanish))
                 {
-                    @Html.ActionLink(item.SummarySpanish, "Edit", new { id = item.id })
+                    @Html.Raw(item.SummarySpanish)
                 }
                 else
                 {
