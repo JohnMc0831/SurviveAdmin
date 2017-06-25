@@ -23,6 +23,7 @@ namespace Virgil.Controllers
         {
             var topic = new Topic();
             ViewBag.Languages = new SelectList(db.GetSupportedLanguages());
+            ViewBag.Icons = new SelectList(db.GetIcons(), "icon", "icon");
             topic.DisplayOrder = db.GetNextTopicDisplayOrderValue();
             return View("Create", topic);
         }
@@ -31,6 +32,7 @@ namespace Virgil.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Topic topic, HttpPostedFileBase upload)
         {
+            ViewBag.Icons = new SelectList(db.GetIcons(), "icon", "icon");
             db.AddTopic(topic);
             if (upload != null && upload.ContentLength > 0)
             {
@@ -54,6 +56,7 @@ namespace Virgil.Controllers
         public ActionResult Edit(int id)
         {
             var topic = db.GetTopicById(id);
+            ViewBag.Icons = new SelectList(db.GetIcons(), "icon", "icon");
             ViewBag.Languages = new SelectList(db.GetSupportedLanguages());
             return View("Edit", topic);
         }
@@ -62,6 +65,7 @@ namespace Virgil.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(Topic topic)
         {
+            ViewBag.Icons = new SelectList(db.GetIcons());
             db.UpdateTopic(topic);
             return RedirectToAction("Index");
         }

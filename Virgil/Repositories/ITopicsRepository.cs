@@ -13,5 +13,6 @@ namespace Virgil.Repositories
         void RemoveTopic(Topic topic);
         int GetNextTopicDisplayOrderValue();
         void AddMedia(Medium file, Topic topic);
+        List<Icon> GetIcons();
     }
 }

@@ -79,5 +79,10 @@ namespace Virgil.Repositories
             topic.Media.Add(file);
             db.SaveChanges();
         }
+
+        public List<Icon> GetIcons()
+        {
+            return db.Icons.OrderBy(i => i.icon).ToList();
+        }
     }
 }

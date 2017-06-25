@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <ApplicationInsightsResourceId>/subscriptions/db8b3d99-60a0-4b92-bb10-c873a01fe408/resourcegroups/FTLTech/providers/microsoft.insights/components/patientsafe</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/3784db24-1ee4-4ca2-a6ab-2ca7ffbe9121/resourcegroups/FTLTech/providers/microsoft.insights/components/patientsafe</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -219,7 +220,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Icon.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Mapping\IconMap.cs" />
     <Compile Include="Models\TopicLink.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Mapping\TopicLinkMap.cs" />

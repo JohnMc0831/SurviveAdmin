@@ -55,6 +55,7 @@ namespace Virgil.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
         // POST: api/Topics
         [ResponseType(typeof(Topic))]
         public IHttpActionResult PostTopic(Topic topic)

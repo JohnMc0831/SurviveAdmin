@@ -38,6 +38,8 @@ namespace Virgil.Models
         public string TextColor { get; set; }
         [Display(Name="Display Order")]
         public int DisplayOrder { get; set; }
+        [Display(Name = "Icon")]
+        public string TopicIcon { get; set; }
         public virtual ICollection<TopicLink> Links { get; set; }
         public virtual ICollection<Medium> Media { get; set; }
         public virtual ICollection<Reference> References { get; set; }

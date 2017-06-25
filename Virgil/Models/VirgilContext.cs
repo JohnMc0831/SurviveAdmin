@@ -20,6 +20,7 @@ namespace Virgil.Models
         public IDbSet<Medium> Media { get; set; }
         public IDbSet<Reference> References { get; set; }
         public IDbSet<Topic> Topics { get; set; }
+        public IDbSet<Icon> Icons { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -27,6 +28,7 @@ namespace Virgil.Models
             modelBuilder.Configurations.Add(new MediumMap());
             modelBuilder.Configurations.Add(new ReferenceMap());
             modelBuilder.Configurations.Add(new TopicMap());
+            //modelBuilder.Configurations.Add(new IconMap());
         }
     }
 }

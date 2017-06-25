@@ -21,6 +21,7 @@ namespace Virgil.Models.Mapping
             this.Property(t => t.DisplayOrder).HasColumnName("DisplayOrder");
             this.Property(t => t.BackColor).HasColumnName("BackColor");
             this.Property(t => t.TextColor).HasColumnName("TextColor");
+            this.Property(t => t.TopicIcon).HasColumnName("TopicIcon");
         }
     }
 }
