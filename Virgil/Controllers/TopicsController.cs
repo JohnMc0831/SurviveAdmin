@@ -14,19 +14,31 @@ using Virgil.Repositories;
 namespace Virgil.Controllers
 {
     [AllowAnonymous]
+    [RoutePrefix("api/Topics")]
     public class TopicsController : ApiController
     {
         private readonly ITopicsRepository db = new TopicsRepository();
 
         // GET: api/Topics
+        [HttpGet]
+        [Route("")]
         public List<Topic> GetTopics()
         {
-
             return db.GetTopics();
         }
 
+        [Route("gettree")]
+        [ResponseType(typeof(TopicTree))]
+        public TopicTree GetItemTree()
+        {
+            return new TopicTree(db);
+        }
+
+
         // GET: api/Topics/5
+        [HttpGet]
         [ResponseType(typeof(Topic))]
+        [Route("topic/id")]
         public IHttpActionResult GetTopic(int id)
         {
             Topic topic = db.GetTopicById(id);
@@ -38,6 +50,7 @@ namespace Virgil.Controllers
         }
 
         // PUT: api/Topics/5
+        [HttpPut]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutTopic(int id, Topic topic)
         {
@@ -57,6 +70,7 @@ namespace Virgil.Controllers
 
 
         // POST: api/Topics
+        [HttpPost]
         [ResponseType(typeof(Topic))]
         public IHttpActionResult PostTopic(Topic topic)
         {

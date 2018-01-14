@@ -6,11 +6,12 @@ namespace Virgil.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Medium
+    public partial class Link
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Medium()
+        public Link()
         {
+            References = new HashSet<Reference>();
             Topics = new HashSet<Topic>();
         }
 
@@ -20,17 +21,13 @@ namespace Virgil.Models
         [StringLength(255)]
         public string Title { get; set; }
 
-        public string Tip { get; set; }
+        [Column("Link")]
+        [Required]
+        [StringLength(1024)]
+        public string Link1 { get; set; }
 
-        public int? FileId { get; set; }
-
-        [StringLength(255)]
-        public string FileName { get; set; }
-
-        [StringLength(50)]
-        public string ContentType { get; set; }
-
-        public byte[] Content { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reference> References { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Topic> Topics { get; set; }

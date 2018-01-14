@@ -19,6 +19,25 @@ namespace Virgil.Repositories
             
         }
 
+        public List<Encounter> GetEncounters()
+        {
+            return db.Encounters.OrderBy(e => e.id).ToList();
+        }
+
+        public List<Section> GetSections()
+        {
+            return db.Sections.OrderBy(s => s.id).ToList();
+        }
+
+        public List<Item> GetSectionsAsItems()
+        {
+            return db.Sections.OrderBy(s => s.id).Select(s => new Item
+            {
+                Name = s.SectionName
+
+            }).ToList();
+        }
+
         public List<string> GetSupportedLanguages()
         {
             var languages = new List<string>
@@ -82,7 +101,7 @@ namespace Virgil.Repositories
 
         public List<Icon> GetIcons()
         {
-            return db.Icons.OrderBy(i => i.icon).ToList();
+            return db.Icons.OrderBy(i => i.icon1).ToList();
         }
     }
 }

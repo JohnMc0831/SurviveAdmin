@@ -6,13 +6,11 @@ namespace Virgil.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Icon
+    public partial class Encounter
     {
         public int id { get; set; }
 
-        [Column("icon")]
         [Required]
-        [StringLength(100)]
-        public string icon1 { get; set; }
+        public string EncounterName { get; set; }
     }
 }

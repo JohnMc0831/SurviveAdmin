@@ -3,8 +3,11 @@ using Virgil.Models;
 
 namespace Virgil.Repositories
 {
-    interface ITopicsRepository
+public interface ITopicsRepository
     {
+        List<Encounter> GetEncounters();
+        List<Section> GetSections();
+        List<Item> GetSectionsAsItems();
         Topic GetTopicById(int id);
         Topic GetTopicByName(string name);
         List<Topic> GetTopics();
