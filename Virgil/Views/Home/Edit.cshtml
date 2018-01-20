@@ -121,7 +121,7 @@
             @Html.LabelFor(model => model.TopicIcon, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
                 <a href="http://ionicons.com" title="Ionicons" alt="Ionicons" target="_blank">View Icons</a>
-                @Html.DropDownListFor(model => model.TopicIcon, @ViewBag.icons as IEnumerable<SelectListItem>, new {@class = "form-control"})
+                @Html.DropDownListFor(model => model.TopicIcon, @ViewBag.topicIcons as IEnumerable<SelectListItem>, new {@class = "form-control"})
                 @Html.ValidationMessageFor(model => model.TopicIcon, "", new {@class = "text-danger"})
             </div>
         </div>

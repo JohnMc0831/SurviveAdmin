@@ -7,11 +7,7 @@ public interface ITopicsRepository
     {
         List<Encounter> GetEncounters();
         List<Section> GetSections();
-
-        Section GetSectionById(int id);
-
-        void UpdateSection(Section section);
-        //List<Item> GetSectionsAsItems();
+        List<Item> GetSectionsAsItems();
         Topic GetTopicById(int id);
         Topic GetTopicByName(string name);
         List<Topic> GetTopics();

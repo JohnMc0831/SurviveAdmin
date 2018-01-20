@@ -8,7 +8,7 @@ namespace Virgil.Models
     public partial class VirgilContext : DbContext
     {
         public VirgilContext()
-            : base("name=VirgilContext")
+            : base("name=VirgilModel")
         {
         }
 

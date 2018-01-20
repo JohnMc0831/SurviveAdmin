@@ -19,49 +19,6 @@ namespace Virgil.Repositories
             
         }
 
-        public List<Encounter> GetEncounters()
-        {
-            List<Encounter> encounters = db.Encounters.Include(e => e.Sections).OrderBy(e => e.id).ToList();
-            var sections = db.Sections.Include(s => s.Topics).ToList();
-
-            foreach (var encounter in encounters)
-            {
-                encounter.Sections = sections.Where(s => s.EncounterId == encounter.id).ToList();
-            }
-            return encounters;
-        }
-
-        public List<Section> GetSections()
-        {
-            return db.Sections.OrderBy(s => s.id).ToList();
-        }
-
-        public Section GetSectionById(int id)
-        {
-            return db.Sections.Find(id);
-        }
-
-        public void UpdateSection(Section section)
-        {
-            db.Entry(section).State = EntityState.Modified;
-            db.SaveChanges();
-        }
-
-        //public List<Item> GetSectionsAsItems()
-        //{
-        //    return db.Sections.OrderBy(s => s.id).Select(s => new Item
-        //    {
-        //        SectionIcon = s.SectionIcon,
-        //        SectionName = s.SectionName,
-        //        Children = s.Topics.Select(t => new Item
-        //        {
-        //            Icon = t.TopicIcon,
-        //            Name = t.Title,
-        //            Summary = t.Summary
-        //        }).ToList()
-        //    }).ToList();
-        //}
-
         public List<string> GetSupportedLanguages()
         {
             var languages = new List<string>
@@ -125,7 +82,7 @@ namespace Virgil.Repositories
 
         public List<Icon> GetIcons()
         {
-            return db.Icons.OrderBy(i => i.icon1).ToList();
+            return db.Icons.OrderBy(i => i.icon).ToList();
         }
     }
 }

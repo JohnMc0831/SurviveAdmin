@@ -31,6 +31,9 @@ namespace Virgil
             bundles.Add(new ScriptBundle("~/bundles/spectrum").Include(
                       "~/Scripts/spectrum.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/chosen").Include(
+                      "~/Scripts/chosen.jquery.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/virgil").Include(
                       "~/Scripts/Virgil.js"));
 
@@ -39,6 +42,7 @@ namespace Virgil
                       "~/Scripts/qTip/jquery.qtip.css",
                       "~/Content/spectrum.css",
                       "~/Content/bootstrap.css",
+                      "~/Content/chosen.css",
                       "~/Content/site.css"));
         }
     }

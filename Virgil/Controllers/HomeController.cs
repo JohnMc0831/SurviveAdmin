@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Mime;
 using System.Web;
 using System.Web.Mvc;
 using Virgil.Models;
 using Virgil.Repositories;
+using WebGrease.Css.Extensions;
 
 namespace Virgil.Controllers
 {
@@ -56,7 +59,7 @@ namespace Virgil.Controllers
         public ActionResult Edit(int id)
         {
             var topic = db.GetTopicById(id);
-            ViewBag.Icons = new SelectList(db.GetIcons(), "icon", "icon");
+            ViewBag.topicIcons = new SelectList(db.GetIcons(), "icon1", "icon1");
             ViewBag.Languages = new SelectList(db.GetSupportedLanguages());
             return View("Edit", topic);
         }
@@ -65,7 +68,7 @@ namespace Virgil.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(Topic topic)
         {
-            ViewBag.Icons = new SelectList(db.GetIcons());
+            ViewBag.topicIcons = new SelectList(db.GetIcons(), "icon1", "icon1");
             db.UpdateTopic(topic);
             return RedirectToAction("Index");
         }
@@ -119,6 +122,46 @@ namespace Virgil.Controllers
             }
             // after successfully uploading redirect the user
             return RedirectToAction("Create", "Home");
+        }
+
+        public ActionResult ManageSections()
+        {
+            var sections = db.GetSections();
+            ViewBag.topics = new SelectList(db.GetTopics(), "id", "Title");
+            ViewBag.icons = new SelectList(db.GetIcons(), "icon1", "icon1");
+            return View("ManageSections", sections);
+        }
+
+        public JsonResult UpdateTopicsForSection(TopicsForSection t)
+        {
+            var section = db.GetSectionById(t.SectionId);
+            section.Topics.ToList().ForEach(tp => section.Topics.Remove(tp));
+            foreach (var i in t.Topics)
+                section.Topics.Add(db.GetTopicByName(i));
+            try
+            {
+                db.UpdateSection(section);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return Json("false");
+            }
+            return Json("true");
+        }
+
+        public JsonResult GetTopicsForSection(int id)
+        {
+            var section = db.GetSectionById(id);
+
+            List<int> selectedVals = new List<int>();
+            foreach (var t in section.Topics)
+            {
+                selectedVals.Add(t.id);
+            }
+            var topics = db.GetTopics();
+            var selectList = new MultiSelectList(topics, "id", "Title", selectedVals);
+            return Json(selectList);
         }
     }
 }

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Virgil.Models.Section>
+@{
+    ViewBag.Title = "Manage Sections";
+}
+
+<h2>Manage Sections</h2>
+
+<table class="table table-hover table-striped table-responsive">
+    <thead>
+    <tr>
+        <th>
+            Encounter
+        </th>
+        <th>
+            Section Name
+        </th>
+        <th>
+            Icon
+        </th>
+        <th>
+            Topics
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>
+                @s.Encounter.EncounterName
+            </td>
+            <td>
+                @s.SectionName
+            </td>
+            <td>
+                @Html.DropDownList("Icons", (IEnumerable<SelectListItem>) ViewBag.icons, @s.SectionIcon, new {@class = "form-control"})
+            </td>
+            <td>
+                <ul style="list-style: none;">
+                    @foreach (var t in s.Topics)
+                    {
+                        <li>@Html.ActionLink(@t.Title, "Edit", new { id = t.id})</li>
+                    }
+                    <li><button data-section="@s.SectionName" data-sectionid="@s.id" data-encounter="@s.Encounter.EncounterName" class="btn btn-sm btn-success assignTopic">Assign Topics</button></li>
+                </ul>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div id="assignTopicsDialog" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Manage Topics for Section <span class="sectName text-info"></span></h4>
+            </div>
+            <div class="modal-body">
+                <label>Encounter:</label><span class="encounterName text-info"></span><br />
+                <label>Section: </label><span class="sectName text-info"></span>
+                @Html.Hidden("sectionId")
+                @Html.DropDownList("topicsForSection", (IEnumerable<SelectListItem>) ViewBag.topics, new {@class = "form-control", multiple = "multiple"})
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSaveTopics" class="btn btn-success" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

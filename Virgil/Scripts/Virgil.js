@@ -93,4 +93,54 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('#topicsForSection').chosen({
+        no_results_text: "Oops!  Topic not found!",
+        width: "95%",
+        placeholder_text_multiple: "Please add or remove topics..."
+    });
+
+    $('.assignTopic').on("click", function (e) {
+        var btn = this;
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "/Home/GetTopicsForSection/" + $(this).data('sectionid'),
+            dataType: "json",
+            complete: function (results) {
+                $(".sectName").text($(btn).data('section'));
+                $("#sectionId").val($(btn).data('sectionid'));
+                $(".encounterName").text($(btn).data("encounter"));
+                var items = results.responseJSON;
+                $("#topicsForSection").find('option').remove().end();
+                $.each(items, function (index, item) {
+                    var selected = item.Selected ? "selected" : "";
+                    $("#topicsForSection").append("<option " + selected  + " val='" + item.Value + "'>" + item.Text + "</option>");
+                });
+                $('#topicsForSection').trigger('chosen:updated');
+                $('#assignTopicsDialog').modal('show');
+            }
+        });
+
+    });
+
+    $("#btnSaveTopics").on("click", function(e) {
+        e.preventDefault();
+        var topics = {
+            sectionId: $('#sectionId').val(),
+            topics: $('#topicsForSection').chosen().val()
+        };
+
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "/Home/UpdateTopicsForSection/",
+            dataType: "json",
+            data: topics,
+            complete: function (result) {
+                window.location.reload();
+            }
+        });
+    })
 });

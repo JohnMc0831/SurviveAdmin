@@ -27,11 +27,11 @@ namespace Virgil.Controllers
             return db.GetTopics();
         }
 
-        [Route("Encounters")]
-        [ResponseType(typeof(List<Encounter>))]
-        public List<Encounter> GetEncounters()
+        [Route("gettree")]
+        [ResponseType(typeof(TopicTree))]
+        public TopicTree GetItemTree()
         {
-            return db.GetEncounters();
+            return new TopicTree(db);
         }
 
 
