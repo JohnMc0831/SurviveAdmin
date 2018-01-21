@@ -1,21 +1,19 @@
 ﻿@model IEnumerable<Virgil.Models.Topic>
 
 @{
-    ViewBag.Title = "Virgil";
+    ViewBag.Title = "PatientAider Administration";
 }
 <br />
 <div class="jumbotron">
-    <img src="~/Content/Laurel-Wreath.png" height="90" class="pull-right" title="Virgil - Your Guide through Health Care Hades" alt="Virgil - Your Health Care Survival Guide" />
-    <h1>Virgil Admin</h1>
-    <p class="lead">A simple little web site to allow for the creation and management of topics used in the Virgil app.</p>
-    @*<p>
-        <a href="#" class="btn btn-primary btn-lg">Sign in &raquo;</a>
-    </p>*@
+    <img src="~/Content/PatientAider.png" height="90" class="pull-right" title="Virgil - Your Guide through Health Care Hades" alt="Virgil - Your Health Care Survival Guide" />
+    <h1>@ViewBag.Title</h1>
+    <p class="lead">A simple  web site to allow for the creation and management of topics used in the PatientAider mobile app.</p>
 </div>
 
 <div class="row">
     <div class="col-lg-9">
         @Html.ActionLink("Add New Topic", "Create", null, new { @class = "btn btn-lg btn-success" })
+        @Html.ActionLink("Manage Sections", "ManageSections", null, new { @class = "btn btn-lg btn-info" })
     </div>
     <div class="col-lg-3" style="text-align: right;margin-top: 10px;">
         @Html.DropDownList("Languages", (SelectList)ViewBag.Languages, new { @class = "form-control" })

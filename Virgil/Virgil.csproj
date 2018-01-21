@@ -246,8 +246,11 @@
     <Content Include="Content\chosen-sprite%402x.png" />
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\chosen.css" />
+    <Content Include="Content\Gear.gif" />
+    <Content Include="Content\ladda.min.css" />
     <Content Include="Content\Laurel-Wreath.png" />
     <Content Include="Content\flatty.css" />
+    <Content Include="Content\PatientAider.png" />
     <Content Include="Content\PatientSafetyMovement-phone.png" />
     <Content Include="Content\PatientSafetyMovement-tablet.png" />
     <Content Include="Content\spectrum.css" />
@@ -279,6 +282,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ladda.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\qTip\jquery.qtip.css" />
     <Content Include="Scripts\qTip\jquery.qtip.js" />
@@ -287,6 +291,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\spectrum.js" />
+    <Content Include="Scripts\spin.min.js" />
     <Content Include="Scripts\tinymce\license.txt" />
     <Content Include="Scripts\tinymce\plugins\advlist\plugin.js" />
     <Content Include="Scripts\tinymce\plugins\advlist\plugin.min.js" />

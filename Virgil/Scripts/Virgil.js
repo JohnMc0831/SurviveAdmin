@@ -101,11 +101,12 @@ $(document).ready(function() {
     });
 
     $('.assignTopic').on("click", function (e) {
-        var btn = this;
+        $("#pleaseWait").modal('show');
         e.preventDefault();
+        var btn = this;
         $.ajax({
             type: "POST",
-            async: false,
+            async: true,
             url: "/Home/GetTopicsForSection/" + $(this).data('sectionid'),
             dataType: "json",
             complete: function (results) {
@@ -119,10 +120,10 @@ $(document).ready(function() {
                     $("#topicsForSection").append("<option " + selected  + " val='" + item.Value + "'>" + item.Text + "</option>");
                 });
                 $('#topicsForSection').trigger('chosen:updated');
+                $("#pleaseWait").modal('hide').fadeOut('slow');
                 $('#assignTopicsDialog').modal('show');
             }
         });
-
     });
 
     $("#btnSaveTopics").on("click", function(e) {
