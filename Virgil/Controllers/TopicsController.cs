@@ -14,24 +14,34 @@ using Virgil.Repositories;
 namespace Virgil.Controllers
 {
     [AllowAnonymous]
-    [RoutePrefix("api/Topics")]
+    [RoutePrefix("api")]
     public class TopicsController : ApiController
     {
         private readonly ITopicsRepository db = new TopicsRepository();
 
         // GET: api/Topics
         [HttpGet]
-        [Route("")]
+        [Route("Topics")]
+        [ResponseType(typeof(List<Topic>))]
         public List<Topic> GetTopics()
         {
             return db.GetTopics();
         }
 
+        [HttpGet]
         [Route("Encounters")]
         [ResponseType(typeof(List<Encounter>))]
         public List<Encounter> GetEncounters()
         {
             return db.GetEncounters();
+        }
+
+        [HttpGet]
+        [Route("Sections")]
+        [ResponseType(typeof(List<Section>))]
+        public List<Section> GetSections()
+        {
+            return db.GetSections();
         }
 
 

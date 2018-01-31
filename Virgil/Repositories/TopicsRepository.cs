@@ -22,7 +22,7 @@ namespace Virgil.Repositories
         public List<Encounter> GetEncounters()
         {
             List<Encounter> encounters = db.Encounters.Include(e => e.Sections).OrderBy(e => e.id).ToList();
-            var sections = db.Sections.Include(s => s.Topics).ToList();
+            var sections = db.Sections.ToList();
 
             foreach (var encounter in encounters)
             {
