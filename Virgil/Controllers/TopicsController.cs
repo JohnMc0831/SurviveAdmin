@@ -20,18 +20,22 @@ namespace Virgil.Controllers
         private readonly ITopicsRepository db = new TopicsRepository();
 
         // GET: api/Topics
-        [HttpGet]
         [Route("Topics")]
-        [ResponseType(typeof(List<Topic>))]
-        public List<Topic> GetTopics()
+        public IEnumerable<Topic> GetTopics()
         {
             return db.GetTopics();
         }
 
+        [Route("SectionsWithTopics")]
+        public IEnumerable<SectionDTO> GetSectionsWithTopics()
+        {
+            return db.GetSectionsWithTopics();
+        }
+
         [HttpGet]
         [Route("Encounters")]
-        [ResponseType(typeof(List<Encounter>))]
-        public List<Encounter> GetEncounters()
+        [ResponseType(typeof(List<EncounterDTO>))]
+        public List<EncounterDTO> GetEncounters()
         {
             return db.GetEncounters();
         }

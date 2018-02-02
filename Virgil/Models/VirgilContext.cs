@@ -10,6 +10,7 @@ namespace Virgil.Models
         public VirgilContext()
             : base("name=VirgilContext")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public virtual DbSet<Encounter> Encounters { get; set; }

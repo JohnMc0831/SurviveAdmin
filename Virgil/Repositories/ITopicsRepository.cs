@@ -5,9 +5,9 @@ namespace Virgil.Repositories
 {
 public interface ITopicsRepository
     {
-        List<Encounter> GetEncounters();
+        List<EncounterDTO> GetEncounters();
         List<Section> GetSections();
-
+        List<SectionDTO> GetSectionsWithTopics();
         Section GetSectionById(int id);
 
         void UpdateSection(Section section);

@@ -224,6 +224,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Encounter.cs" />
+    <Compile Include="Models\EncounterDTO.cs" />
     <Compile Include="Models\Icon.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Link.cs" />
@@ -231,7 +232,9 @@
     <Compile Include="Models\Medium.cs" />
     <Compile Include="Models\Reference.cs" />
     <Compile Include="Models\Section.cs" />
+    <Compile Include="Models\SectionDTO.cs" />
     <Compile Include="Models\Topic.cs" />
+    <Compile Include="Models\TopicDTO.cs" />
     <Compile Include="Models\TopicsForSection.cs" />
     <Compile Include="Models\TopicTree.cs" />
     <Compile Include="Models\VirgilContext.cs" />
