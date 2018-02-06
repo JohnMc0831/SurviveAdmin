@@ -9,7 +9,7 @@ public interface ITopicsRepository
         List<Section> GetSections();
         List<SectionDTO> GetSectionsWithTopics();
         Section GetSectionById(int id);
-
+        List<Section> GetSectionsWithEncounters();
         void UpdateSection(Section section);
         //List<Item> GetSectionsAsItems();
         Topic GetTopicById(int id);

@@ -126,7 +126,7 @@ namespace Virgil.Controllers
 
         public ActionResult ManageSections()
         {
-            var sections = db.GetSections();
+            var sections = db.GetSectionsWithEncounters();
             ViewBag.topics = new SelectList(db.GetTopics(), "id", "Title");
             ViewBag.icons = new SelectList(db.GetIcons(), "icon1", "icon1");
             return View("ManageSections", sections);

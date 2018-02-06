@@ -40,6 +40,11 @@ namespace Virgil.Repositories
             return db.Sections.OrderBy(s => s.id).ToList();
         }
 
+        public List<Section> GetSectionsWithEncounters()
+        {
+            return db.Sections.Include(s => s.Encounter).Include(s => s.Topics).OrderBy(s => s.id).ToList();
+        }
+
         public Section GetSectionById(int id)
         {
             return db.Sections.Find(id);
