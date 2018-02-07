@@ -134,7 +134,7 @@ namespace Virgil.Controllers
 
         public JsonResult UpdateTopicsForSection(TopicsForSection t)
         {
-            var section = db.GetSectionById(t.SectionId);
+            var section = db.GetSectionWithTopicsById(t.SectionId);
             section.Topics.ToList().ForEach(tp => section.Topics.Remove(tp));
             foreach (var i in t.Topics)
                 section.Topics.Add(db.GetTopicByName(i));
@@ -147,12 +147,13 @@ namespace Virgil.Controllers
                 Console.WriteLine(e);
                 return Json("false");
             }
-            return Json("true");
+            var results = section.Topics.Select(topic => new { topic.id, topic.Title }).ToList();
+            return Json(results);
         }
 
         public JsonResult GetTopicsForSection(int id)
         {
-            var section = db.GetSectionById(id);
+            var section = db.GetSectionWithTopicsById(id);
 
             List<int> selectedVals = new List<int>();
             foreach (var t in section.Topics)

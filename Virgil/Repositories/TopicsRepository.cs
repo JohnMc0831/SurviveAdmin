@@ -50,6 +50,11 @@ namespace Virgil.Repositories
             return db.Sections.Find(id);
         }
 
+        public Section GetSectionWithTopicsById(int id)
+        {
+            return db.Sections.Include(s => s.Topics).FirstOrDefault(s => s.id == id);
+        }
+
         public void UpdateSection(Section section)
         {
             db.Entry(section).State = EntityState.Modified;

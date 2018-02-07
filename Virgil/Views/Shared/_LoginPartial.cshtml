@@ -7,7 +7,12 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @{
+                var niceName = User.Identity.GetUserName().Contains(".") ? "Hello Ariana!" : User.Identity.GetUserName();
+                niceName = User.Identity.GetUserName().Contains("_") ? "Hello Mari!" : User.Identity.GetUserName();
+                niceName = User.Identity.GetUserName().Contains("johnmc0831") ? "Hello John!" : User.Identity.GetUserName();
+            }
+            @Html.ActionLink(niceName, "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>

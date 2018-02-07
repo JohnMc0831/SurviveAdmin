@@ -113,6 +113,7 @@ $(document).ready(function() {
                 $(".sectName").text($(btn).data('section'));
                 $("#sectionId").val($(btn).data('sectionid'));
                 $(".encounterName").text($(btn).data("encounter"));
+                $("#encounter").val($(btn).data("encounter"));
                 var items = results.responseJSON;
                 $("#topicsForSection").find('option').remove().end();
                 $.each(items, function (index, item) {
@@ -126,7 +127,8 @@ $(document).ready(function() {
         });
     });
 
-    $("#btnSaveTopics").on("click", function(e) {
+    $("#btnSaveTopics").on("click", function (e) {
+        var btn = this;
         e.preventDefault();
         var topics = {
             sectionId: $('#sectionId').val(),
@@ -139,7 +141,7 @@ $(document).ready(function() {
             url: "/Home/UpdateTopicsForSection/",
             dataType: "json",
             data: topics,
-            complete: function (result) {
+            complete: function () {
                 window.location.reload();
             }
         });

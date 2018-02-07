@@ -8,6 +8,7 @@ public interface ITopicsRepository
         List<EncounterDTO> GetEncounters();
         List<Section> GetSections();
         List<SectionDTO> GetSectionsWithTopics();
+        Section GetSectionWithTopicsById(int id);
         Section GetSectionById(int id);
         List<Section> GetSectionsWithEncounters();
         void UpdateSection(Section section);

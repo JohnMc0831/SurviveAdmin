@@ -36,10 +36,13 @@
                 @Html.DropDownList("Icons", (IEnumerable<SelectListItem>) ViewBag.icons, @s.SectionIcon, new {@class = "form-control"})
             </td>
             <td>
-                <ul style="list-style: none;">
+                @{
+                    var listName = string.Format("list{0}-{1}", s.Encounter.EncounterName, s.id);
+                }
+                <ul id="@listName" style="list-style: none;">
                     @foreach (var t in s.Topics)
                     {
-                        <li>@Html.ActionLink(@t.Title, "Edit", new { id = t.id})</li>
+                        <li>@Html.ActionLink(@t.Title, "Edit", new {id = t.id})</li>
                     }
                     <li>
                         <button data-section="@s.SectionName" data-sectionid="@s.id" data-encounter="@s.Encounter.EncounterName" class="btn btn-sm btn-success assignTopic">
@@ -64,6 +67,7 @@
                 <label>Encounter:</label><span class="encounterName text-info"></span><br />
                 <label>Section: </label><span class="sectName text-info"></span>
                 @Html.Hidden("sectionId")
+                @Html.Hidden("encounter")
                 @Html.DropDownList("topicsForSection", (IEnumerable<SelectListItem>) ViewBag.topics, new {@class = "form-control", multiple = "multiple"})
             </div>
             <div class="modal-footer">
