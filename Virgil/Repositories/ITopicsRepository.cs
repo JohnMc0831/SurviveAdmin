@@ -3,8 +3,10 @@ using Virgil.Models;
 
 namespace Virgil.Repositories
 {
-public interface ITopicsRepository
+    public interface ITopicsRepository
     {
+        Footnotes GetFootnotes();
+        void UpdateFootnotes(Footnotes notes);
         List<EncounterDTO> GetEncounters();
         List<Section> GetSections();
         List<SectionDTO> GetSectionsWithTopics();
@@ -12,7 +14,6 @@ public interface ITopicsRepository
         Section GetSectionById(int id);
         List<Section> GetSectionsWithEncounters();
         void UpdateSection(Section section);
-        //List<Item> GetSectionsAsItems();
         Topic GetTopicById(int id);
         Topic GetTopicByName(string name);
         List<Topic> GetTopics();

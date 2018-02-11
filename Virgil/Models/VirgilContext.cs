@@ -20,6 +20,7 @@ namespace Virgil.Models
         public virtual DbSet<Reference> References { get; set; }
         public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<Topic> Topics { get; set; }
+        public virtual DbSet<Footnotes> Footnotes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -37,7 +38,7 @@ namespace Virgil.Models
                 .HasMany(e => e.Topics)
                 .WithMany(e => e.References)
                 .Map(m => m.ToTable("TopicsReferences").MapLeftKey("ReferenceId").MapRightKey("TopicId"));
-
+        
             modelBuilder.Entity<Section>()
                 .HasMany(e => e.Topics)
                 .WithMany(e => e.Sections)

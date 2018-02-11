@@ -20,6 +20,17 @@ namespace Virgil.Repositories
             
         }
 
+        public Footnotes GetFootnotes()
+        {
+            return db.Footnotes.First();
+        }
+
+        public void UpdateFootnotes(Footnotes notes)
+        {
+            db.Entry(notes).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+
         public List<EncounterDTO> GetEncounters()
         {
             List<Encounter> encounters = db.Encounters.Include(e => e.Sections).OrderBy(e => e.id).ToList();

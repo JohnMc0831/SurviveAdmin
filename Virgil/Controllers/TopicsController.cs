@@ -48,6 +48,14 @@ namespace Virgil.Controllers
             return db.GetSections();
         }
 
+        [HttpGet]
+        [Route("Footnotes")]
+        [ResponseType(typeof(List<Footnotes>))]
+        public Footnotes GetFootnotes()
+        {
+            return db.GetFootnotes();
+        }
+
 
         // GET: api/Topics/5
         [HttpGet]

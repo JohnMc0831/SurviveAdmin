@@ -164,5 +164,20 @@ namespace Virgil.Controllers
             var selectList = new MultiSelectList(topics, "id", "Title", selectedVals);
             return Json(selectList);
         }
+
+        public ActionResult Footnotes()
+        {
+            var model = db.GetFootnotes();
+            return View("Footnotes", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public ActionResult Footnotes(Footnotes notes)
+        {
+            db.UpdateFootnotes(notes);
+            return RedirectToAction("Index");
+        }
     }
 }
