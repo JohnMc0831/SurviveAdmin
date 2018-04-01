@@ -37,7 +37,7 @@ $(document).ready(function() {
         $(daddyDiv).animate({
             backgroundColor: '#add8e6'
         }, 1000, 'linear', function() {
-            $(this).after('<div>Update complete.</div>');
+            $(daddyDiv).append('<span>Update complete.</span>');
         });
 
     });

@@ -50,9 +50,19 @@
                         please use the green <strong>Assign Topics</strong> button above.
                     </p>
                     <ol id="@listName" class='sortable' style="list-style: none;">
-                        @foreach (var t in s.Topics)
+                        @{
+                            var sortedTopicIds = s.SectionTopicOrder.Split(',');
+                        }
+                        @foreach (var topicId in sortedTopicIds)
                         {
-                            <li data-id="@t.id" data-title="@t.Title">@Html.ActionLink(@t.Title, "Edit", new {id = t.id})</li>
+                            foreach (var t in s.Topics)
+                            {
+                                if (t.id == Int32.Parse(topicId))
+                                {
+                                    <li data-id="@t.id" data-title="@t.Title">@Html.ActionLink(@t.Title, "Edit", new {id = t.id})</li>
+                                }
+                            }
+                           
                         }
                     </ol>
                     <button data-listname="@listName" data-sectionid="@s.id" data-encounterid="@s.EncounterId" class="btn btn-sm btn-info setTopicOrder">Set Order</button>

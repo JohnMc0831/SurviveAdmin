@@ -118,6 +118,7 @@ namespace Virgil.Repositories
             return db.Topics.OrderBy(t => t.DisplayOrder).ToList();
         }
 
+
         public List<SectionDTO> GetSectionsWithTopics()
         {
             //var sectDTOs = new List<SectionDTO>();
