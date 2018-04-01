@@ -1,47 +1,6 @@
 ﻿/// <reference path="_references.js" />
 $(document).ready(function() {
     //Dom loaded...
-
-    sortable('.sortable', {
-        forcePlaceholderSize: true,
-        placeholderClass: 'ph-class',
-        hoverClass: 'bg-maroon yellow'
-    });
-
-    $(".setTopicOrder").on("click", function(e) {
-        var daddyDiv = $(this).parent('div');
-        e.preventDefault();
-        var listItems = $("#" + $(this).data('listname') + " li");
-        var sectionId = $(this).data('sectionid');
-
-        var listOrder = "";
-        listItems.each(function(index, item) {
-            listOrder += $(item).data('id') + ',';
-        });
-        listOrder = listOrder.substr(0, listOrder.length - 1);
-        
-        //send updated listOrder to server for memorialization...
-        $.ajax({
-            type: "POST",
-            async: false,
-            url: "/Home/UpdateSectionTopicOrder/?id=" + sectionId + "&topicOrder=" + listOrder,
-            dataType: "json"
-        });
-        //$('.topicsListContainer').css("background-color", "#006400");
-        $(daddyDiv).animate({
-            backgroundColor: '#006400'
-        }, 1000, 'linear', function() {
-            //$(this).after('<div>Update complete.</div>');
-        });
-
-        $(daddyDiv).animate({
-            backgroundColor: '#add8e6'
-        }, 1000, 'linear', function() {
-            $(this).after('<div>Update complete.</div>');
-        });
-
-    });
-
     $("#Languages").on("change", function () {
         var currentLingo = $("#Languages option:selected").val();
         switch (currentLingo) {
@@ -134,58 +93,4 @@ $(document).ready(function() {
             }
         });
     });
-
-    $('#topicsForSection').chosen({
-        no_results_text: "Oops!  Topic not found!",
-        width: "95%",
-        placeholder_text_multiple: "Please add or remove topics..."
-    });
-
-    $('.assignTopic').on("click", function (e) {
-        $("#pleaseWait").modal('show');
-        e.preventDefault();
-        var btn = this;
-        $.ajax({
-            type: "POST",
-            async: true,
-            url: "/Home/GetTopicsForSection/" + $(this).data('sectionid'),
-            dataType: "json",
-            complete: function (results) {
-                $(".sectName").text($(btn).data('section'));
-                $("#sectionId").val($(btn).data('sectionid'));
-                $(".encounterName").text($(btn).data("encounter"));
-                $("#encounter").val($(btn).data("encounter"));
-                var items = results.responseJSON;
-                $("#topicsForSection").find('option').remove().end();
-                $.each(items, function (index, item) {
-                    var selected = item.Selected ? "selected" : "";
-                    $("#topicsForSection").append("<option " + selected  + " val='" + item.Value + "'>" + item.Text + "</option>");
-                });
-                $('#topicsForSection').trigger('chosen:updated');
-                $("#pleaseWait").modal('hide').fadeOut('slow');
-                $('#assignTopicsDialog').modal('show');
-            }
-        });
-    });
-
-    $("#btnSaveTopics").on("click",
-        function(e) {
-            var btn = this;
-            e.preventDefault();
-            var topics = {
-                sectionId: $('#sectionId').val(),
-                topics: $('#topicsForSection').chosen().val()
-            };
-
-            $.ajax({
-                type: "POST",
-                async: false,
-                url: "/Home/UpdateTopicsForSection/",
-                dataType: "json",
-                data: topics,
-                complete: function() {
-                    window.location.reload();
-                }
-            });
-        });
 });

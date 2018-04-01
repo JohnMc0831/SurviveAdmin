@@ -19,6 +19,8 @@ namespace Virgil.Models
 
         public List<int> TopicIds { get; set; }
 
+        public string SectionTopicOrder { get; set; }
+
         public List<TopicDTO> Topics { get; set; }
 
         public SectionDTO(Section s)

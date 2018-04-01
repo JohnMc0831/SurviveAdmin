@@ -1,0 +1,142 @@
+﻿@model Virgil.Models.Topic
+
+@{
+    ViewBag.Title = "Update Topic <strong>" + Model.Title + "</strong>"; 
+}
+
+<div class="row">
+    <div class="col-lg-9">
+        <h2>@Html.Raw(ViewBag.Title)</h2>
+    </div>
+    <div class="col-lg-3" style="text-align: right;margin-top: 10px;">
+        @Html.DropDownList("Languages", (SelectList)ViewBag.Languages, new { @class = "form-control" })
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Topic Details</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group lingoEnglish">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control fullWidth" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group lingoGerman hidden">
+            @Html.LabelFor(model => model.TitleGerman, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.EditorFor(model => model.TitleGerman, new { htmlAttributes = new { @class = "form-control fullWidth" } })
+                @Html.ValidationMessageFor(model => model.TitleGerman, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group lingoSpanish hidden">
+            @Html.LabelFor(model => model.TitleSpanish, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.EditorFor(model => model.TitleSpanish, new { htmlAttributes = new { @class = "form-control fullWidth" } })
+                @Html.ValidationMessageFor(model => model.TitleSpanish, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group lingoEnglish">
+            @Html.LabelFor(model => model.Summary, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.TextBoxFor(model => model.Summary, new { @class = "form-control fullWidth" })
+                @Html.ValidationMessageFor(model => model.Summary, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group lingoGerman hidden">
+            @Html.LabelFor(model => model.SummaryGerman, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.TextBoxFor(model => model.SummaryGerman, new { @class = "form-control fullWidth"})
+                @Html.ValidationMessageFor(model => model.SummaryGerman, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group lingoSpanish hidden">
+            @Html.LabelFor(model => model.SummarySpanish, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.TextBoxFor(model => model.SummarySpanish, new { @class = "form-control fullWidth" })
+                @Html.ValidationMessageFor(model => model.SummarySpanish, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group lingoEnglish">
+            @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Body, new { @class = "form-control", rows = "35" })
+                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group lingoGerman hidden">
+            @Html.LabelFor(model => model.BodyGerman, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.BodyGerman, new { @class = "form-control", rows = "35" })
+                @Html.ValidationMessageFor(model => model.BodyGerman, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group lingoSpanish hidden">
+            @Html.LabelFor(model => model.BodySpanish, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.BodySpanish, new { @class = "form-control", rows = "35" })
+                @Html.ValidationMessageFor(model => model.BodySpanish, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DisplayOrder, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DisplayOrder, new { htmlAttributes = new { @class = "form-control iddybiddyField" } })
+                @Html.ValidationMessageFor(model => model.DisplayOrder, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.BackColor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BackColor, new { htmlAttributes = new { @class = "form-control iddybiddyField colorPicker" } })
+                @Html.ValidationMessageFor(model => model.BackColor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TextColor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TextColor, new { htmlAttributes = new { @class = "form-control iddybiddyField colorPicker" } })
+                @Html.ValidationMessageFor(model => model.TextColor, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.TopicIcon, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                <a href="http://ionicons.com" title="Ionicons" alt="Ionicons" target="_blank">View Icons</a>
+                @Html.DropDownListFor(model => model.TopicIcon, @ViewBag.icons as IEnumerable<SelectListItem>, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.TopicIcon, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to Topics", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

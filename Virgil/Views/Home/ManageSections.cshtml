@@ -35,21 +35,28 @@
             <td>
                 @Html.DropDownList("Icons", (IEnumerable<SelectListItem>) ViewBag.icons, @s.SectionIcon, new {@class = "form-control"})
             </td>
-            <td>
-                @{
-                    var listName = string.Format("list{0}-{1}", s.Encounter.EncounterName, s.id);
-                }
-                <ul id="@listName" style="list-style: none;">
-                    @foreach (var t in s.Topics)
-                    {
-                        <li>@Html.ActionLink(@t.Title, "Edit", new {id = t.id})</li>
+            <td style="max-width: 400px;">
+                <div class="topicsListContainer">
+                    <button data-section="@s.SectionName" data-sectionid="@s.id" data-encounter="@s.Encounter.EncounterName" class="btn btn-sm btn-success assignTopic">
+                        Assign Topics
+                    </button>
+
+                    @{
+                        var listName = string.Format("list{0}-{1}", s.Encounter.EncounterName.Replace(" ", ""), s.id);
                     }
-                    <li>
-                        <button data-section="@s.SectionName" data-sectionid="@s.id" data-encounter="@s.Encounter.EncounterName" class="btn btn-sm btn-success assignTopic">
-                            Assign Topics
-                        </button>
-                    </li>
-                </ul>
+                    <h3>Topics</h3>
+                    <p class="topicsListBackground">
+                        Drag and drop the topics to set the desired display order.  To add or remove topics,
+                        please use the green <strong>Assign Topics</strong> button above.
+                    </p>
+                    <ol id="@listName" class='sortable' style="list-style: none;">
+                        @foreach (var t in s.Topics)
+                        {
+                            <li data-id="@t.id" data-title="@t.Title">@Html.ActionLink(@t.Title, "Edit", new {id = t.id})</li>
+                        }
+                    </ol>
+                    <button data-listname="@listName" data-sectionid="@s.id" data-encounterid="@s.EncounterId" class="btn btn-sm btn-info setTopicOrder">Set Order</button>
+                </div>
             </td>
         </tr>
     }

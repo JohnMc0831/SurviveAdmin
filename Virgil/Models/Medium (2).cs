@@ -6,26 +6,31 @@ namespace Virgil.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Section
+    public partial class Medium
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Section()
+        public Medium()
         {
             Topics = new HashSet<Topic>();
         }
 
         public int id { get; set; }
 
-        public int? EncounterId { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string Title { get; set; }
 
-        public string SectionName { get; set; }
+        public string Tip { get; set; }
+
+        public int? FileId { get; set; }
+
+        [StringLength(255)]
+        public string FileName { get; set; }
 
         [StringLength(50)]
-        public string SectionIcon { get; set; }
+        public string ContentType { get; set; }
 
-        public string SectionTopicOrder { get; set; }
-
-        public virtual Encounter Encounter { get; set; }
+        public byte[] Content { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Topic> Topics { get; set; }

@@ -1,47 +1,6 @@
 ﻿/// <reference path="_references.js" />
 $(document).ready(function() {
     //Dom loaded...
-
-    sortable('.sortable', {
-        forcePlaceholderSize: true,
-        placeholderClass: 'ph-class',
-        hoverClass: 'bg-maroon yellow'
-    });
-
-    $(".setTopicOrder").on("click", function(e) {
-        var daddyDiv = $(this).parent('div');
-        e.preventDefault();
-        var listItems = $("#" + $(this).data('listname') + " li");
-        var sectionId = $(this).data('sectionid');
-
-        var listOrder = "";
-        listItems.each(function(index, item) {
-            listOrder += $(item).data('id') + ',';
-        });
-        listOrder = listOrder.substr(0, listOrder.length - 1);
-        
-        //send updated listOrder to server for memorialization...
-        $.ajax({
-            type: "POST",
-            async: false,
-            url: "/Home/UpdateSectionTopicOrder/?id=" + sectionId + "&topicOrder=" + listOrder,
-            dataType: "json"
-        });
-        //$('.topicsListContainer').css("background-color", "#006400");
-        $(daddyDiv).animate({
-            backgroundColor: '#006400'
-        }, 1000, 'linear', function() {
-            //$(this).after('<div>Update complete.</div>');
-        });
-
-        $(daddyDiv).animate({
-            backgroundColor: '#add8e6'
-        }, 1000, 'linear', function() {
-            $(this).after('<div>Update complete.</div>');
-        });
-
-    });
-
     $("#Languages").on("change", function () {
         var currentLingo = $("#Languages option:selected").val();
         switch (currentLingo) {
@@ -168,24 +127,23 @@ $(document).ready(function() {
         });
     });
 
-    $("#btnSaveTopics").on("click",
-        function(e) {
-            var btn = this;
-            e.preventDefault();
-            var topics = {
-                sectionId: $('#sectionId').val(),
-                topics: $('#topicsForSection').chosen().val()
-            };
+    $("#btnSaveTopics").on("click", function (e) {
+        var btn = this;
+        e.preventDefault();
+        var topics = {
+            sectionId: $('#sectionId').val(),
+            topics: $('#topicsForSection').chosen().val()
+        };
 
-            $.ajax({
-                type: "POST",
-                async: false,
-                url: "/Home/UpdateTopicsForSection/",
-                dataType: "json",
-                data: topics,
-                complete: function() {
-                    window.location.reload();
-                }
-            });
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "/Home/UpdateTopicsForSection/",
+            dataType: "json",
+            data: topics,
+            complete: function () {
+                window.location.reload();
+            }
         });
+    })
 });

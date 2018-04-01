@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Mime;
 using System.Web;
 using System.Web.Mvc;
 using Virgil.Models;
 using Virgil.Repositories;
-using WebGrease.Css.Extensions;
 
 namespace Virgil.Controllers
 {
@@ -59,7 +56,7 @@ namespace Virgil.Controllers
         public ActionResult Edit(int id)
         {
             var topic = db.GetTopicById(id);
-            ViewBag.topicIcons = new SelectList(db.GetIcons(), "icon1", "icon1");
+            ViewBag.Icons = new SelectList(db.GetIcons(), "icon", "icon");
             ViewBag.Languages = new SelectList(db.GetSupportedLanguages());
             return View("Edit", topic);
         }
@@ -68,7 +65,7 @@ namespace Virgil.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(Topic topic)
         {
-            ViewBag.topicIcons = new SelectList(db.GetIcons(), "icon1", "icon1");
+            ViewBag.Icons = new SelectList(db.GetIcons());
             db.UpdateTopic(topic);
             return RedirectToAction("Index");
         }
@@ -122,70 +119,6 @@ namespace Virgil.Controllers
             }
             // after successfully uploading redirect the user
             return RedirectToAction("Create", "Home");
-        }
-
-        public ActionResult ManageSections()
-        {
-            var sections = db.GetSectionsWithEncounters();
-            //TODO - Need a new db.GetTopicsWithDisplayOrder() method here, in order to ensure the ManageSections() view honors display order on refresh/postback.
-            ViewBag.topics = new SelectList(db.GetTopics(), "id", "Title");
-            ViewBag.icons = new SelectList(db.GetIcons(), "icon1", "icon1");
-            return View("ManageSections", sections);
-        }
-
-        public JsonResult UpdateTopicsForSection(TopicsForSection t)
-        {
-            var section = db.GetSectionWithTopicsById(t.SectionId);
-            section.Topics.ToList().ForEach(tp => section.Topics.Remove(tp));
-            foreach (var i in t.Topics)
-                section.Topics.Add(db.GetTopicByName(i));
-            try
-            {
-                db.UpdateSection(section);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return Json("false");
-            }
-            var results = section.Topics.Select(topic => new { topic.id, topic.Title }).ToList();
-            return Json(results);
-        }
-
-        public JsonResult GetTopicsForSection(int id)
-        {
-            var section = db.GetSectionWithTopicsById(id);
-
-            List<int> selectedVals = new List<int>();
-            foreach (var t in section.Topics)
-            {
-                selectedVals.Add(t.id);
-            }
-            var topics = db.GetTopics();
-            var selectList = new MultiSelectList(topics, "id", "Title", selectedVals);
-            return Json(selectList);
-        }
-
-        public void UpdateSectionTopicOrder(int id, string topicOrder)
-        {
-            var section = db.GetSectionById(id);
-            section.SectionTopicOrder = topicOrder;
-            db.UpdateSection(section);
-        }
-
-        public ActionResult Footnotes()
-        {
-            var model = db.GetFootnotes();
-            return View("Footnotes", model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [ValidateInput(false)]
-        public ActionResult Footnotes(Footnotes notes)
-        {
-            db.UpdateFootnotes(notes);
-            return RedirectToAction("Index");
         }
     }
 }

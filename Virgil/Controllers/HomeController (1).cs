@@ -127,7 +127,6 @@ namespace Virgil.Controllers
         public ActionResult ManageSections()
         {
             var sections = db.GetSectionsWithEncounters();
-            //TODO - Need a new db.GetTopicsWithDisplayOrder() method here, in order to ensure the ManageSections() view honors display order on refresh/postback.
             ViewBag.topics = new SelectList(db.GetTopics(), "id", "Title");
             ViewBag.icons = new SelectList(db.GetIcons(), "icon1", "icon1");
             return View("ManageSections", sections);
@@ -164,13 +163,6 @@ namespace Virgil.Controllers
             var topics = db.GetTopics();
             var selectList = new MultiSelectList(topics, "id", "Title", selectedVals);
             return Json(selectList);
-        }
-
-        public void UpdateSectionTopicOrder(int id, string topicOrder)
-        {
-            var section = db.GetSectionById(id);
-            section.SectionTopicOrder = topicOrder;
-            db.UpdateSection(section);
         }
 
         public ActionResult Footnotes()

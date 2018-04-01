@@ -20,17 +20,6 @@ namespace Virgil.Repositories
             
         }
 
-        public Footnotes GetFootnotes()
-        {
-            return db.Footnotes.First();
-        }
-
-        public void UpdateFootnotes(Footnotes notes)
-        {
-            db.Entry(notes).State = EntityState.Modified;
-            db.SaveChanges();
-        }
-
         public List<EncounterDTO> GetEncounters()
         {
             List<Encounter> encounters = db.Encounters.Include(e => e.Sections).OrderBy(e => e.id).ToList();
@@ -39,23 +28,8 @@ namespace Virgil.Repositories
             {
                 foreach (var section in enc.Sections)
                 {
-                    section.Topics = new List<TopicDTO>();
                     var s = db.Sections.Include(sect => sect.Topics).First(sect => sect.id == section.id);
-                    //Order the topics according to the SetionTopicOrder property on the Section object.
-                    var topicOrder = s.SectionTopicOrder.Split(',');
-                    foreach (var topicId in topicOrder)
-                    {
-                        int id = Int32.Parse(topicId);
-                        foreach (var topic in s.Topics)
-                        {
-                            if (topic.id == id)
-                            {
-                                //hit!
-                                section.Topics.Add(new TopicDTO(topic));
-                            }
-                        }
-                    }
-                    //section.Topics = s.Topics.Select(t => new TopicDTO(t)).ToList();
+                    section.Topics = s.Topics.Select(t => new TopicDTO(t)).ToList();
                 }
             }
             return encs;
