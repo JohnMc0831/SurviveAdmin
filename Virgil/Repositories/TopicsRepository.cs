@@ -185,7 +185,7 @@ namespace Virgil.Repositories
 
         public List<Icon> GetIcons()
         {
-            return db.Icons.OrderBy(i => i.icon1).ToList();
+            return db.Icons.OrderBy(i => i.icon).ToList();
         }
     }
 }

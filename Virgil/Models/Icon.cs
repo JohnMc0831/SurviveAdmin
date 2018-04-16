@@ -13,6 +13,6 @@ namespace Virgil.Models
         [Column("icon")]
         [Required]
         [StringLength(100)]
-        public string icon1 { get; set; }
+        public string icon { get; set; }
     }
 }
