@@ -33,6 +33,7 @@ namespace Virgil.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(Topic topic, HttpPostedFileBase upload)
         {
             ViewBag.Icons = new SelectList(db.GetIcons(), "icon", "icon");
@@ -59,7 +60,7 @@ namespace Virgil.Controllers
         public ActionResult Edit(int id)
         {
             var topic = db.GetTopicById(id);
-            ViewBag.topicIcons = new SelectList(db.GetIcons(), "icon1", "icon1");
+            ViewBag.topicIcons = new SelectList(db.GetIcons(), "icon", "icon");
             ViewBag.Languages = new SelectList(db.GetSupportedLanguages());
             return View("Edit", topic);
         }
@@ -68,7 +69,7 @@ namespace Virgil.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(Topic topic)
         {
-            ViewBag.topicIcons = new SelectList(db.GetIcons(), "icon1", "icon1");
+            ViewBag.topicIcons = new SelectList(db.GetIcons(), "icon", "icon");
             db.UpdateTopic(topic);
             return RedirectToAction("Index");
         }
@@ -129,7 +130,7 @@ namespace Virgil.Controllers
             var sections = db.GetSectionsWithEncounters();
             //TODO - Need a new db.GetTopicsWithDisplayOrder() method here, in order to ensure the ManageSections() view honors display order on refresh/postback.
             ViewBag.topics = new SelectList(db.GetTopics(), "id", "Title");
-            ViewBag.icons = new SelectList(db.GetIcons(), "icon1", "icon1");
+            ViewBag.icons = new SelectList(db.GetIcons(), "icon", "icon");
             return View("ManageSections", sections);
         }
 
