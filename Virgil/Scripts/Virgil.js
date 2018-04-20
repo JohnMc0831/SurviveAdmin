@@ -183,8 +183,17 @@ $(document).ready(function() {
                 url: "/Home/UpdateTopicsForSection/",
                 dataType: "json",
                 data: topics,
-                complete: function() {
-                    window.location.reload();
+                complete: function(results) {
+                    var encounter = $("#encounter").val();
+                    var sectionId = $("#sectionId").val();
+                    var listName = "#list" + encounter + "-" + sectionId;
+                    $(listName + " li").empty();
+                    $(topics.topics).each(function(index, result) {
+                        $(listName).append("<li data-id='" + result.id + "' data-title='" + result.Title + "'>" +
+                            "<a href='/Home/Edit/" + result.id + ">" + result.Title + "</a></li>");
+                        console.log('appended ' + "<li data-id='" + result.id + "' data-title='" + result.Title + "'>" +
+                            "<a href='/Home/Edit/" + result.id + ">" + result.Title + "</a></li>");
+                    });
                 }
             });
         });

@@ -138,8 +138,15 @@ namespace Virgil.Controllers
         {
             var section = db.GetSectionWithTopicsById(t.SectionId);
             section.Topics.ToList().ForEach(tp => section.Topics.Remove(tp));
+            section.SectionTopicOrder = string.Empty;  //empty this to repopulate it
+            db.UpdateSection(section);
             foreach (var i in t.Topics)
-                section.Topics.Add(db.GetTopicByName(i));
+            {
+                var topic = db.GetTopicByName(i);
+                section.Topics.Add(topic);
+                section.SectionTopicOrder += $",{topic.id}";
+            }
+            section.SectionTopicOrder = section.SectionTopicOrder.Substring(1);
             try
             {
                 db.UpdateSection(section);
