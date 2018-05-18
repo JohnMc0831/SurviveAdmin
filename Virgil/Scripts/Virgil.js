@@ -188,12 +188,16 @@ $(document).ready(function() {
                     var sectionId = $("#sectionId").val();
                     var listName = "#list" + encounter + "-" + sectionId;
                     $(listName + " li").empty();
-                    $(topics.topics).each(function(index, result) {
+                    var newTopics = results.responseJSON;
+                    $(newTopics).each(function(index, result) {
                         $(listName).append("<li data-id='" + result.id + "' data-title='" + result.Title + "'>" +
                             "<a href='/Home/Edit/" + result.id + ">" + result.Title + "</a></li>");
                         console.log('appended ' + "<li data-id='" + result.id + "' data-title='" + result.Title + "'>" +
                             "<a href='/Home/Edit/" + result.id + ">" + result.Title + "</a></li>");
                     });
+
+                    $("#pleaseWait").modal('show');
+                    window.location.reload();
                 }
             });
         });

@@ -51,10 +51,9 @@
                         </p>
                         <ol id="@listName" class='sortable' style="list-style: none;">
                             @{
-                                string[] sortedTopicIds;
                                 if (!string.IsNullOrEmpty(s.SectionTopicOrder))
                                 {
-                                    sortedTopicIds = s.SectionTopicOrder.Split(',');
+                                    List<string> sortedTopicIds = new List<string>(s.SectionTopicOrder.Split(','));
                                     foreach (var topicId in sortedTopicIds)
                                     {
                                         foreach (var t in s.Topics)
@@ -62,6 +61,18 @@
                                             if (t.id == Int32.Parse(topicId))
                                             {
                                                 <li data-id="@t.id" data-title="@t.Title">@Html.ActionLink(@t.Title, "Edit", new { id = t.id })</li>
+                                            }
+                                        }
+                                    }
+                                    if (sortedTopicIds.Count < s.Topics.Count)
+                                    {
+                                        //we have previously unsorted topics which we should display, so add them to the end of the list.
+                                        foreach (var topic in s.Topics)
+                                        {
+                                            string topicId = topic.id.ToString();
+                                            if (sortedTopicIds.Contains(topicId))
+                                            {
+                                                <li data-id="@topic.id" data-title="@topic.Title">@Html.ActionLink(@topic.Title, "Edit", new { id = topic.id })</li>
                                             }
                                         }
 
@@ -114,7 +125,7 @@
                 <h4 class="modal-title">Working On It...</h4>
             </div>
             <div class="modal-body">
-                <img src="~/Content/Gear.gif" style="margin-right: 20px; display: inline;" /><h3 style="display: inline;">Please wait. Retrieving Topics...</h3>
+                <img src="~/Content/Gear.gif" style="margin-right: 20px; display: inline;" /><h3 style="display: inline;">Please wait. Retrieving/Updating Topics...</h3>
             </div>
             <div class="modal-footer">
             </div>
