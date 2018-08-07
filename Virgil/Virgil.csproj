@@ -277,7 +277,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\patientsafe - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\patientsafe - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\patientsafe - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\patientsafe - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\html5sortable.js" />
